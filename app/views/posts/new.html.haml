@@ -1,0 +1,8 @@
+%h1 New Post
+
+- if @post.errors.any?
+  .alert.alert-danger
+    - @post.errors.full_messages.each do |msg|
+      = msg
+
+= render 'form'

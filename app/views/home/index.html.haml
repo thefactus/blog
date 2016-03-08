@@ -1,0 +1,14 @@
+.row
+  - @posts.each do |post|
+    .col-sm-6.col-md-4
+      .thumbnail
+        .caption{align:"justify"}
+          %h3
+            = link_to post.title, post
+          = raw post.subtitle
+          %small
+            Tags:
+            = post.tags
+          %br
+          %small.pull-right #{post.created_at}
+          %br

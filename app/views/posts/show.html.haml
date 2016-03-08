@@ -1,0 +1,11 @@
+%p #{link_to 'Home', root_url} / #{link_to 'News', posts_path}
+
+- if @post.present?
+  %h2.page-header
+    = @post.title
+
+  %p
+    = raw @post.body.html_safe
+  %p
+    Tags:
+    = @post.tags

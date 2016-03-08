@@ -1,0 +1,18 @@
+= form_for @post, html: { multipart: true, autocomplete: 'off' } do |f|
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: 'form-control', autofocus: true
+  .form-group
+    = f.label :subtitle
+    = f.text_field :subtitle, class: 'form-control'
+  .form-group
+    = f.label :tag_list, 'Tags'
+    = f.text_field :tag_list, value: @post.tags.join(', '), class: 'form-control tags'
+  .form-group
+    = f.label :body
+    = f.cktext_area :body, class: 'ckeditor'
+  = link_to 'Cancel', list_posts_path, class: 'btn btn-danger'
+  = f.submit class: 'btn btn-primary'
+
+  :javascript
+    $(".tags").tagsInput();
