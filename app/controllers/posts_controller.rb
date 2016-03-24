@@ -4,7 +4,9 @@ class PostsController < ApplicationController
   before_action only: [:show]
 
   def index
-    if params[:tag]
+    if params[:q]
+      @posts = Post.search(params[:q]).records.decorate
+    elsif params[:tag]
       @posts = Post.tagged_with(params[:tag]).decorate
     else
       @posts = Post.latest_posts.decorate

@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
   extend FriendlyId
 
   friendly_id :title, use: :slugged
@@ -11,4 +13,19 @@ class Post < ActiveRecord::Base
   validates :body, presence: true
 
   scope :latest_posts, -> { order('created_at desc') }
+
+  mapping do
+    indexes :id, index: :not_analyzed
+    indexes :title
+  end
+
+  def as_indexed_json(options = {})
+    self.as_json(only: [:id, :title, :body],
+      include: {
+        user: { only: [:email] },
+        tags: { only: [:name] }
+    })
+  end
 end
+
+Post.import

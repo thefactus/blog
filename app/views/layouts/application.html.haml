@@ -12,6 +12,10 @@
     = csrf_meta_tags
   %body
     .container
+      = form_tag posts_path, class: 'form-inline pull-right', role: 'search', method: :get do |f|
+        .form-group
+          = text_field_tag :q, params[:q], clasas: 'form-control'
+        = button_tag "Search", class: 'btn btn-default', name: nil
       %h1
         = link_to "Blog Name", root_url
       %br

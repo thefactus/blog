@@ -20,6 +20,8 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'ckeditor', github: 'galetahub/ckeditor'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'draper', '~> 1.3'
+gem 'elasticsearch-rails'
+gem 'elasticsearch-model'
 
 group :test do
   gem 'factory_girl_rails'
