@@ -8,7 +8,7 @@ feature "User manages posts" do
   end
 
   scenario 'creates a post' do
-    visit '/dashboard'
+    visit '/admin'
     click_link 'Posts'
     click_link 'New Post'
     fill_in 'Title', :with => 'Lorem Ipsum'
