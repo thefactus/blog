@@ -14,19 +14,14 @@
     %nav.navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
       .container
         .navbar-header
-          %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
-            %span.sr-only Toggle navigation
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          = link_to 'Dashboard', dashboard_path, class: "navbar-brand"
+          = link_to BLOG_NAME, admin_path, class: "navbar-brand"
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           %ul.nav.navbar-nav
             %li
               = link_to 'Posts', list_posts_path
           %ul.nav.navbar-nav.navbar-right
             %li
-              = link_to 'Blog', root_url
+              = link_to 'My Blog', root_url
             %li
               = link_to 'Edit account', edit_user_registration_path
             %li
