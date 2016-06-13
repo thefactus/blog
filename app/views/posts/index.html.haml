@@ -1,19 +1,21 @@
 - if params[:tag]
-  %h2
+  %h4
     tagged by: #{params[:tag]}
 
 - if params[:tag]
   %p#tag_cloud
     more tags:
     - tag_cloud Post.tag_counts, %w[s m l] do |tag, css_class|
-      = link_to tag.name, tag_path(tag.name), class:"#{css_class} + post-tag"
+      = link_to tag.name, tag_path(tag.name), class:"#{css_class} + post-tag" unless raw(tag).eql?(params[:tag])
+
 .row
   - @posts.each do |post|
     .col-md-4.text-center
       .thumbnail
         .caption{align:"justify"}
           %h3 #{link_to post.title, post}
-          = raw post.subtitle
+          %p
+            = raw post.subtitle
           %small
             = post.tags
           %br

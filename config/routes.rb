@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   }
 
   devise_scope :user do
-    get "/login" => "users/sessions#new"
   end
 
   get 'tags/:tag', to: 'posts#index', as: :tag
@@ -18,10 +17,10 @@ Rails.application.routes.draw do
     collection do
       get 'list', action: :index_admin
     end
+    resources :comments, only: [:create, :destroy]
   end
 
-  get 'dashboard' => 'admin#dashboard'
-  get 'king_of_the_hill' => 'pages#king_of_the_hill'
+  get 'admin' => 'admin#index'
   get 'contact' => 'pages#contact'
   get 'about' => 'pages#about'
 
