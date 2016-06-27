@@ -1,0 +1,17 @@
+.row
+  - if @posts && @posts.any?
+    - @posts.each do |post|
+      .col-md-4.text-center
+        .thumbnail
+          .caption{align:"justify"}
+            %h3 #{link_to post.title, post_path(post)}
+            %p
+              = raw post.subtitle
+            %small
+              = raw post.tags
+            %br
+            %small.pull-right #{raw post.created_at}
+            %br
+  - else
+    %p
+      No results

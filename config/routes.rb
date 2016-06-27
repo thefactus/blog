@@ -11,11 +11,12 @@ Rails.application.routes.draw do
   devise_scope :user do
   end
 
-  get 'tags/:tag', to: 'posts#index', as: :tag
+  get 'tags/:tag', to: 'posts#tagged_with', as: :tag
 
   resources :posts do
     collection do
       get 'list', action: :index_admin
+      get 'search', action: :search
     end
     resources :comments, only: [:create, :destroy]
   end

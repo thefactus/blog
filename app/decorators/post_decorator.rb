@@ -8,10 +8,9 @@ class PostDecorator < Draper::Decorator
   end
 
   def tags
-    tags = []
-      model.tags.each do |tag|
-        tags << link_to_tag(tag)
-      end
+    tags = model.tags.map do |tag|
+      link_to_tag(tag)
+    end
     h.raw tags.join(', ')
   end
 

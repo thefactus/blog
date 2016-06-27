@@ -30,7 +30,28 @@ describe Post do
       x = FactoryGirl.create(:post, title: 'First Title', body: 'lorem')
       y = FactoryGirl.create(:post, title: 'Second Title', body: 'lorem')
       z = FactoryGirl.create(:post, title: 'Third Title', body: 'lorem')
-      expect(Post.latest_posts).to eq([z, y, x])
+      expect(Post.latest_posts).to eq([z.decorate,
+                                       y.decorate,
+                                       x.decorate])
+    end
+  end
+
+  describe '#latest_posts_cached' do
+    it 'order cached posts by created_at desc' do
+      x = FactoryGirl.create(:post, title: 'First Title', body: 'lorem')
+      y = FactoryGirl.create(:post, title: 'Second Title', body: 'lorem')
+      z = FactoryGirl.create(:post, title: 'Third Title', body: 'lorem')
+
+      decorated_posts = [z.decorate, y.decorate, x.decorate]
+
+      # cached posts must store decorated tags
+      posts = decorated_posts.map do |post|
+        p = JSON.load(post.to_json)
+        p['tags'] = post.tags
+        p
+      end
+
+      expect(Post.latest_posts_cached).to eq(posts)
     end
   end
 end

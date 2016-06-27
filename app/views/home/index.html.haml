@@ -4,11 +4,11 @@
       .thumbnail
         .caption{align:"justify"}
           %h3
-            = link_to post.title, post
+            = link_to post['title'], post_path(post['id'])
           %p
-            = raw post.subtitle
+            = raw post['subtitle']
           %small
-            = post.tags
+            = raw post['tags']
           %br
-          %small.pull-right #{post.created_at}
+          %small.pull-right #{raw post['created_at']}
           %br

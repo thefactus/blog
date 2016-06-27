@@ -1,16 +1,19 @@
 class PostsController < ApplicationController
+  include PostHelper
   layout 'admin', only: [:new, :edit, :index_admin, :create, :update]
   before_action :authenticate_user!, only: [:new, :edit, :index_admin]
   before_action only: [:show]
 
   def index
-    if params[:q]
-      @posts = Post.search(params[:q]).records.decorate
-    elsif params[:tag]
-      @posts = Post.tagged_with(params[:tag]).decorate
-    else
-      @posts = Post.latest_posts.decorate
-    end
+    @posts = Post.latest_posts_cached
+  end
+
+  def tagged_with
+    @posts = Post.tagged_with(params[:tag]).decorate if params[:tag]
+  end
+
+  def search
+    @posts = Post.search(params[:q]).records.decorate if params[:q]
   end
 
   def index_admin

@@ -22,6 +22,10 @@ gem 'acts-as-taggable-on', '~> 3.4'
 gem 'draper', '~> 1.3'
 gem 'elasticsearch-rails'
 gem 'elasticsearch-model'
+gem 'redis'
+gem 'redis-namespace'
+gem 'redis-rails'
+gem 'redis-rack-cache'
 
 group :test do
   gem 'factory_girl_rails'
@@ -29,6 +33,7 @@ group :test do
   gem 'rspec-rails'
   gem 'guard-rspec'
   gem 'shoulda-matchers', '~> 3.1'
+  gem 'fakeredis', :require => 'fakeredis/rspec'
 end
 
 group :development, :test do
