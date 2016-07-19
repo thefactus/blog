@@ -1,17 +1,18 @@
 !!!
-%html{:lang => "en"}
+%html{lang: "en"}
   %head
-    %meta{:charset => "utf-8"}/
-    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
-    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
-    %meta{:content => "", :name => "description"}/
-    %meta{:content => "", :name => "author"}/
-    %title Blog
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    %meta{charset: "utf-8"}/
+    %meta{content: "IE=edge", "http-equi":"X-UA-Compatible"}/
+    %meta{content: "width=device-width, initial-scale=1", name: "viewport"}/
+    %meta{content: "", name: "description"}/
+    %meta{content: "", name: "author"}/
+    %title
+      = BLOG_NAME
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-trac': true
+    = javascript_include_tag 'application', 'data-turbolinks-trac': true
     = csrf_meta_tags
-  %body
-    %nav.navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
+  %body{style: "margin: 60px auto;"}
+    %nav.navbar.navbar-inverse.navbar-fixed-top{role: "navigation"}
       .container
         .navbar-header
           = link_to BLOG_NAME, admin_path, class: "navbar-brand"
@@ -39,4 +40,4 @@
       %footer
         .row
           .col-lg-12
-            %p Copyright © Blog
+            %p Copyright © #{BLOG_NAME}

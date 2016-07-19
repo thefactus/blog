@@ -41,10 +41,13 @@
       .container
         .row
           .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
-            .site-heading
-              %h1 Blog
-              %hr.small
-                %span.subheading A Clean Blog
+            .post-heading
+              %h1
+                = @post.title
+              %h2.subheading
+                = @post.subtitle
+              %span.meta
+                = @post.created_at
     / Main Content
     .container
       .row
@@ -72,5 +75,4 @@
                     %span.fa-stack.fa-lg
                       %i.fa.fa-circle.fa-stack-2x
                       %i.fa.fa-github.fa-stack-1x.fa-inverse
-                %p.copyright.text-muted Copyright &copy; #{BLOG_NAME}
-
+              %p.copyright.text-muted Copyright &copy; Your Website 2014
