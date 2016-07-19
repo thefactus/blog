@@ -1,8 +1,6 @@
 class PostsController < ApplicationController
-  include PostHelper
-  layout 'admin', only: [:new, :edit, :index_admin, :create, :update]
+  layout :layout
   before_action :authenticate_user!, only: [:new, :edit, :index_admin]
-  before_action only: [:show]
 
   def index
     @posts = Post.latest_posts_cached
@@ -63,5 +61,15 @@ class PostsController < ApplicationController
 
   def post_params
     params.required(:post).permit(:title, :subtitle, :body, :tag_list)
+  end
+
+  def layout
+    if %w(new edit index_admin create update).include?(action_name)
+      'admin'
+    elsif %w(show).include?(action_name)
+      'post'
+    else
+      'application'
+    end
   end
 end

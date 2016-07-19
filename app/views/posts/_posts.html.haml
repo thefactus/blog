@@ -1,0 +1,10 @@
+- @posts.each do |post|
+  %hr
+  .post-preview
+    = link_to post_path(post['id']) do
+      %h2.post-title
+        = post['title']
+      %h3.post-subtitle
+        = post['subtitle']
+    %p.post-meta
+      = raw post['created_at']

@@ -1,5 +1,5 @@
 = form_for([@post, @post.comments.build]) do |f|
   .form-group
     = f.label :body
-    = f.text_area :body, class: 'form-control', autofocus: true
+    = f.text_area :body, class: 'form-control'
   = f.submit 'Publish', class: 'btn btn-primary'

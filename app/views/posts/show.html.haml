@@ -1,7 +1,4 @@
 - if @post.present?
-  %h2.page-header
-    = @post.title
-
   %p
     = raw @post.body.html_safe
   %p
