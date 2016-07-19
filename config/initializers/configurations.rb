@@ -1,1 +1,1 @@
-BLOG_NAME = 'Blog name'
+BLOG_NAME = 'Blog'
