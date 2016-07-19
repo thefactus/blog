@@ -1,6 +1,11 @@
 %h1 Posts
 = link_to 'New Post', new_post_path, class: 'btn btn-primary'
 
+= form_tag list_posts_path, class: 'form-inline pull-right', role: 'search', method: :get do |f|
+  .form-group
+    = text_field_tag :q, params[:q], clasas: 'form-control'
+  = button_tag 'Search', class: 'btn btn-default', name: nil
+
 .table-responsive
   %table.table
     %thead
@@ -21,9 +26,9 @@
         %td
           = post.user.email
         %td
-          = post.created_at.strftime('%B %d, %Y')
+          = post.created_at
         %td
-          = post.updated_at.strftime('%B %d, %Y')
+          = post.updated_at
         %td
           = link_to 'Edit', edit_post_path(post), class: 'btn btn-primary btn-sm'
           = link_to 'Delete', post_path(post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'

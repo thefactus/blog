@@ -15,7 +15,11 @@ class PostsController < ApplicationController
   end
 
   def index_admin
-    @posts = Post.latest_posts
+    if params[:q].present?
+      @posts = Post.search(params[:q]).records.decorate if params[:q]
+    else
+      @posts = Post.latest_posts
+    end
   end
 
   def new
@@ -23,11 +27,11 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.friendly.find(params[:id])
+    @post = find_post
   end
 
   def show
-    @post = Post.friendly.find(params[:id]).decorate
+    @post = find_post.decorate
   end
 
   def create
@@ -41,7 +45,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = Post.friendly.find(params[:id])
+    @post = find_post
 
     if @post.update(post_params)
       redirect_to list_posts_path, notice: 'Post was successfully updated!'
@@ -51,13 +55,17 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.friendly.find(params[:id])
+    @post = find_post
     @post.destroy
 
     redirect_to list_posts_path, notice: 'Post was successfully deleted!'
   end
 
   private
+
+  def find_post
+    Post.friendly.find(params[:id])
+  end
 
   def post_params
     params.required(:post).permit(:title, :subtitle, :body, :tag_list)
