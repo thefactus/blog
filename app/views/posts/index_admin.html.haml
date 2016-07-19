@@ -1,34 +1,26 @@
+= link_to 'New Post', new_post_path, class: 'btn btn-primary pull-right h1'
 %h1 Posts
-= link_to 'New Post', new_post_path, class: 'btn btn-primary'
 
-= form_tag list_posts_path, class: 'form-inline pull-right', role: 'search', method: :get do |f|
-  .form-group
-    = text_field_tag :q, params[:q], clasas: 'form-control'
-  = button_tag 'Search', class: 'btn btn-default', name: nil
+%section.search-form
+  = form_tag list_posts_path, role: 'search', method: :get do |f|
+    .input-group.input-group-md
+      = text_field_tag :q, params[:q], class: 'form-control input-md', placeholder: 'Search'
+      %span.input-group-btn
+        = submit_tag 'Search', class: 'btn btn-primary btn-md'
 
-.table-responsive
-  %table.table
-    %thead
-      %tr
-        %th #
-        %th Title
-        %th Author
-        %th Created at
-        %th Updated at
-        %th Actions
-    %tbody
+%hr
+
+%section.search-results
+  %ol.list-group
     - @posts.each do |post|
-      %tr
-        %th
-          = post.id
-        %td
+      %li.list-group-item.clearfix
+        %h3.pull-right
+          %small.text-uppercase
+            Created #{post.created_at}
+        %h2.h3
           = post.title
-        %td
-          = post.user.email
-        %td
-          = post.created_at
-        %td
-          = post.updated_at
-        %td
+        .pull-right
           = link_to 'Edit', edit_post_path(post), class: 'btn btn-primary btn-sm'
           = link_to 'Delete', post_path(post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'
+        %h4
+          = post.user.email
