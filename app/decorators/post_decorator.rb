@@ -7,6 +7,12 @@ class PostDecorator < Draper::Decorator
     end
   end
 
+  def updated_at
+    h.content_tag :span, class: 'time' do
+      object.created_at.strftime('%Y %B %d')
+    end
+  end
+
   def tags
     tags = model.tags.map do |tag|
       link_to_tag(tag)

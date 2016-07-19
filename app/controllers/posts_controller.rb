@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     if params[:q].present?
       @posts = Post.search(params[:q]).records.decorate if params[:q]
     else
-      @posts = Post.latest_posts
+      @posts = Post.latest_posts.decorate
     end
   end
 
