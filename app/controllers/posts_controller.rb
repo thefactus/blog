@@ -16,9 +16,14 @@ class PostsController < ApplicationController
 
   def index_admin
     if params[:q].present?
-      @posts = Post.search(params[:q]).records.decorate if params[:q]
+      @posts = Post.search(params[:q]).records
     else
       @posts = Post.latest_posts.decorate
+    end
+
+    respond_to do |format|
+      format.html {}
+      format.json { render json: @posts }
     end
   end
 
