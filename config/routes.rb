@@ -13,17 +13,18 @@ Rails.application.routes.draw do
 
   get 'tags/:tag', to: 'posts#tagged_with', as: :tag
 
-  resources :posts do
-    collection do
-      get 'list', action: :index_admin
-      get 'search', action: :search
-    end
+  resources :posts, only: [:show] do
     resources :comments, only: [:create, :destroy]
   end
 
-  get 'admin' => 'admin#index'
+  # get 'admin' => 'admin#index'
   get 'contact' => 'pages#contact'
   get 'about' => 'pages#about'
 
   root 'home#index'
+
+  scope module: 'admin', path: '/admin' do
+    root 'admin#index'
+    resources :posts
+  end
 end
