@@ -18,5 +18,4 @@
 //= require ckeditor/reinit
 //= require jquery.tagsinput.min
 //= require blog.min
-//= require angular
 //= require_tree .
