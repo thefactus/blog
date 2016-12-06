@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   scope module: 'admin', path: '/admin' do
-    root 'admin#index'
+    root 'home#index'
     resources :posts
   end
 end
