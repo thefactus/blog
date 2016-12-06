@@ -27,6 +27,9 @@ gem 'redis'
 gem 'redis-namespace'
 gem 'redis-rails'
 gem 'redis-rack-cache'
+gem 'remotipart', github: 'mshibuya/remotipart'
+gem 'rails_admin', '~> 1.0'
+gem 'rails_admin_rollincode', '~> 1.0'
 
 group :test do
   gem 'factory_girl_rails'

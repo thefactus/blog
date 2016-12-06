@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :users, controllers: {
     sessions: 'users/sessions',
@@ -22,9 +23,4 @@ Rails.application.routes.draw do
   get 'about' => 'pages#about'
 
   root 'home#index'
-
-  scope module: 'admin', path: '/admin' do
-    root 'home#index'
-    resources :posts
-  end
 end
