@@ -1,4 +1,15 @@
 GIT
+  remote: git://github.com/drapergem/draper.git
+  revision: 45e18569d9631710f889d75d49f971fb60d5cbcd
+  specs:
+    draper (3.0.0.pre1)
+      actionpack (~> 5.0)
+      activemodel (~> 5.0)
+      activemodel-serializers-xml (~> 1.0)
+      activesupport (~> 5.0)
+      request_store (~> 1.0)
+
+GIT
   remote: git://github.com/galetahub/ckeditor.git
   revision: 78ae17ac4ac9d7fcf132ba8ed3cdf6156bbd4755
   specs:
@@ -105,11 +116,6 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
-    draper (2.1.0)
-      actionpack (>= 3.0)
-      activemodel (>= 3.0)
-      activesupport (>= 3.0)
-      request_store (~> 1.0)
     elasticsearch (5.0.0)
       elasticsearch-api (= 5.0.0)
       elasticsearch-transport (= 5.0.0)
@@ -377,7 +383,7 @@ DEPENDENCIES
   ckeditor!
   coffee-rails (~> 4.1.0)
   devise
-  draper
+  draper!
   elasticsearch-model
   elasticsearch-rails
   factory_girl_rails

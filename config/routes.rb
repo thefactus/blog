@@ -18,7 +18,6 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
 
-  # get 'admin' => 'admin#index'
   get 'contact' => 'pages#contact'
   get 'about' => 'pages#about'
 

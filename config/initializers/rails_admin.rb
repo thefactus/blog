@@ -1,4 +1,13 @@
 RailsAdmin.config do |config|
+  config.model 'Post' do
+    edit do
+      field :title
+      field :subtitle
+      field :body, :ck_editor
+      field :tag_list
+      field :slug
+    end
+  end
 
   ### Popular gems integration
 
